@@ -6,9 +6,12 @@ class Guest:
         self.age = age
         self.drunkenness = drunkenness
 
+    def sufficient_funds(self, item):
+        return self.wallet >= item.price
+
     def pay_entry_fee(self, room):
         if self.sufficient_funds(room):
-            self.wallet -= room.entry_fee
+            self.wallet -= room.price
 
     def buy_drink(self, drink):
         if self.sufficient_funds(drink):
@@ -20,5 +23,11 @@ class Guest:
             self.wallet -= food.price
             self.drunkenness -= food.rejuvenation_level
 
-    def sufficient_funds(self, item):
-        return self.wallet >= item.price
+    def whoop(self, playlist):
+        for song in playlist:
+            if song == self.fav_song:
+                return "Whoop!"
+            else:
+                pass
+
+    

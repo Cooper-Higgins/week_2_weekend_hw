@@ -27,7 +27,7 @@ class TestRoom(unittest.TestCase):
        self.guest5 = Guest("Christopher", 100.00, self.song5, 31, 0)
        self.guest6 = Guest("Calum", 100.00, self.song6, 31, 0)
        self.guest7 = Guest("Danny", 100.00, self.song7, 32, 0)
-       self.guest8 = Guest("Jamie", 100.00, self.song8, 31, 0)
+       self.guest8 = Guest("Jamie", 5.00, self.song8, 31, 0)
 
        self.large_party = [self.guest1, self.guest2, self.guest3, self.guest4, self.guest5, self.guest6, self.guest7, self.guest8]
 
@@ -35,7 +35,7 @@ class TestRoom(unittest.TestCase):
         self.assertEqual("Mr. Beast", self.room_1.name)
 
     def test_room_has_entry_fee(self):
-        self.assertEqual(15, self.room_1.entry_fee)
+        self.assertEqual(15, self.room_1.price)
 
     def test_room_capacity(self):
         self.assertEqual(8, self.room_2.capacity)
@@ -59,3 +59,16 @@ class TestRoom(unittest.TestCase):
         expected_value = "No room at the inn"
         actual_value = self.room_1.no_room_at_the_inn(self.large_party, self.room_1.capacity)
         self.assertEqual(expected_value, actual_value)
+
+    def test_add_less_guests_than_room_capacity(self):
+        expected_value = "Come on in!"
+        actual_value = self.room_3.no_room_at_the_inn(self.large_party, self.room_3.capacity)
+        self.assertEqual(expected_value, actual_value)
+
+    def test_guest_whoop_if_fav_song_in_room_playlist(self):
+        self.room_1.add_song_to_room_playlist(self.song1)
+        self.room_1.check_in_guests_to_room(self.guest1)
+        expected_value = "Whoop!"
+        actual_value = self.guest1.whoop(self.room_1.playlist)
+        self.assertEqual(expected_value, actual_value)
+        print(expected_value)
