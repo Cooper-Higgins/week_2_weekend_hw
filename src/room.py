@@ -14,3 +14,9 @@ class Room:
 
     def add_song_to_room_playlist(self, song):
         self.playlist.append(song)
+
+    def no_room_at_the_inn(self, guests, capacity):
+        if len(guests) > capacity:
+            return "No room at the inn"
+        else:   
+            return "Come on in!"

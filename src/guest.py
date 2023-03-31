@@ -6,6 +6,10 @@ class Guest:
         self.age = age
         self.drunkenness = drunkenness
 
+    def pay_entry_fee(self, room):
+        if self.sufficient_funds(room):
+            self.wallet -= room.entry_fee
+
     def buy_drink(self, drink):
         if self.sufficient_funds(drink):
             self.wallet -= drink.price
