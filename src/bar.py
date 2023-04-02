@@ -4,4 +4,12 @@ class Bar:
         self.rooms = rooms
         self.guests = guests
         self.till = till
-        self.post_room_lobby = []
+
+    def guest_is_old_enough(self, guest):
+        return guest.age >= 18
+
+    def guest_can_afford_drink(self, guest, drink):
+        return guest.sufficient_funds(drink)
+
+    def guest_too_drunk(self, guest):
+        return guest.drunkenness >= 50

@@ -71,4 +71,3 @@ class TestRoom(unittest.TestCase):
         expected_value = "Whoop!"
         actual_value = self.guest1.whoop(self.room_1.playlist)
         self.assertEqual(expected_value, actual_value)
-        print(expected_value)
